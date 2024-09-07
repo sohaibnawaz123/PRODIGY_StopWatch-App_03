@@ -10,7 +10,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.bgColor,
-      appBar: AppBar(title: Text('Portfolio App',style: appHeading(AppColor.textColor, 28),),backgroundColor: AppColor.appbarBGColor,),
+      appBar: AppBar(title: Text('StopWatch',style: appHeading(AppColor.textColor, 28),),backgroundColor: AppColor.appbarBGColor,),
     );
   }
 }
