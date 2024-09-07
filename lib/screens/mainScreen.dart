@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.bgColor,
 
-      appBar: AppBar(title: Text('StopWatch',style: appHeading(AppColor.textColor, 28),),backgroundColor: AppColor.appbarBGColor,),
+      appBar: AppBar(title: Text('Portfolio',style: appHeading(AppColor.textColor, 28),),backgroundColor: AppColor.appbarBGColor,),
 
       body: AnimatedContainer(
         duration: const Duration(seconds: 10),
