@@ -9,12 +9,12 @@ class AppColor {
   static Color buttonBGColor = const Color(0xFF0369a1);
 }
 
-TextStyle appHeading(Color color,double size,{FontWeight fontweight=FontWeight.w400}) {
+TextStyle appHeading(Color color,double size,{FontWeight fontweight=FontWeight.w400,TextDecoration decoration = TextDecoration.none,Color? dcolor}) {
     return TextStyle(
       fontFamily: 'Akaya',
       color:color,
       fontSize: size,
-      fontWeight: fontweight
+      fontWeight: fontweight,decoration: decoration,decorationColor: dcolor,decorationStyle: TextDecorationStyle.double,decorationThickness: 1.2
     );
   }
   TextStyle appText(Color color,double size,{FontWeight fontweight=FontWeight.w400}) {
