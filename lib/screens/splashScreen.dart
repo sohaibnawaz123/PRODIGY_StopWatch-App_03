@@ -1,11 +1,10 @@
 // ignore_for_file: file_names
 
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolioapp/screens/mainScreen.dart';
+import 'package:portfolioapp/screens/stopWatch.dart';
 import '../utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 10), () {
-      Get.offAll(const MainScreen());
+      Get.offAll(const StopWatchScreen());
     });
   }
 
@@ -35,13 +34,13 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Lottie.asset(
-              'assets/images/Animation.json',
+              'assets/images/stopwatch.json',
               width: 300,
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 10),
             Text(
-              'PORTFOLIO',
+              'STOP WATCH',
               style: appHeading(AppColor.headingColor, 50),
             ),
           ],
