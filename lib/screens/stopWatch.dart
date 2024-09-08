@@ -36,7 +36,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
         child: Padding(
           padding: const EdgeInsets.only(top: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
@@ -170,8 +170,8 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
                                 ),
                                 elevation: 10,
                                 shadowColor: Colors.black87,
-                                minimumSize: Size(Get.width * .5, 50),
-                                maximumSize: Size(Get.width * .5, 50)),
+                                minimumSize: Size(Get.width * .4, 50),
+                                maximumSize: Size(Get.width * .4, 50)),
                             onPressed: () {
                               isRunning ? pauseTimer() : startTimer();
                             },
@@ -209,16 +209,26 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
                                 ),
                                 elevation: 10,
                                 shadowColor: Colors.black87,
-                                minimumSize: Size(Get.width * .3, 50),
-                                maximumSize: Size(Get.width * .3, 50)),
+                                minimumSize: Size(Get.width * .4, 50),
+                                maximumSize: Size(Get.width * .4, 50)),
                             onPressed: () {
                               isRunning ? _addLaps() : _resetTimer();
                             },
                             child: isRunning
-                                ? Text(
-                                    'LAPS',
-                                    style: appText(AppColor.textColor, 18),
-                                  )
+                                ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                        'LAPS',
+                                        style: appText(AppColor.textColor, 18),
+                                      ),
+                                      Icon(
+                                        Icons.flag,
+                                        size: 30,
+                                        color: AppColor.textColor,
+                                      )
+                                  ],
+                                )
                                 : Text('RESET',
                                     style: appText(AppColor.textColor, 18)))
                       ],
@@ -226,61 +236,69 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
                   ],
                 ),
               ),
-
+              laps.isNotEmpty
+                  ? const SizedBox(
+                      height: 20,
+                    )
+                  : const SizedBox.shrink(),
               //Laps Box
-              laps.isNotEmpty?
-              Container(
-                width: Get.width-20,
-                height: Get.height * 0.5,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 3, color: AppColor.buttonBGColor),
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'TIME LAPS',
-                        style: appHeading(AppColor.buttonBGColor, 24,
-                            fontweight: FontWeight.w600),
+              laps.isNotEmpty
+                  ? Container(
+                      width: Get.width - 20,
+                      height: Get.height * 0.5,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(width: 3, color: AppColor.buttonBGColor),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
                       ),
-                      Expanded(
-                        child: ListView.builder(
-                            itemCount: laps.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Laps ${index + 1}",
-                                        style: appText(AppColor.textColor2, 18),
-                                      ),
-                                      Text(
-                                        laps[index],
-                                        style: appText(AppColor.textColor2, 18),
-                                      ),
-                                    ],
-                                  ),
-                                  Divider(
-                                    height: 10,
-                                    thickness: 1,
-                                    color: AppColor.headingColor,
-                                  )
-                                ],
-                              );
-                            }),
-                      )
-                    ],
-                  ),
-                ),
-              ):const SizedBox.shrink()
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'TIME LAPS',
+                              style: appHeading(AppColor.buttonBGColor, 24,
+                                  fontweight: FontWeight.w600),
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                  itemCount: laps.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Laps ${index + 1}",
+                                              style: appText(
+                                                  AppColor.textColor2, 18),
+                                            ),
+                                            Text(
+                                              laps[index],
+                                              style: appText(
+                                                  AppColor.textColor2, 18),
+                                            ),
+                                          ],
+                                        ),
+                                        Divider(
+                                          height: 10,
+                                          thickness: 1,
+                                          color: AppColor.headingColor,
+                                        )
+                                      ],
+                                    );
+                                  }),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink()
             ],
           ),
         ),
